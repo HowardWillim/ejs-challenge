@@ -10,6 +10,10 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+let posts=[]
+
+
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -17,6 +21,7 @@ app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
   res.render("home",{no1:homeStartingContent})
+  console.log(posts);
 })
 
 app.get("/contact",(req,res)=>{
@@ -33,9 +38,10 @@ app.get("/compose",(req,res)=>{
 
 
 app.post("/compose",(req,res)=>{
-    let items=req.body.title;
-    console.log(items);
-
+    const post={title:req.body.title,
+      content:req.body.content}
+    posts.push(post);
+    res.redirect("/");
 
 })
 
