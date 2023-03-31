@@ -1,4 +1,8 @@
 <%- include('partial/header.ejs') %>
     <h1>Home</h1>
     <p><%= no1 %></p>
+    <% value.forEach(function(values){ %>
+        <h1><%= values.title %></h1>
+        <p><%= values.content.substring(0,100) + " ...."  %> <a href="/posts/<%=values.title %> ">Read More</a></p>
+    <%} )%>
 <%- include('partial/footer.ejs') %>
